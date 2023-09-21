@@ -560,6 +560,10 @@ class CameraInput(FrigateBaseModel):
 
 
 class CameraFfmpegConfig(FfmpegConfig):
+    timeout: float = Field(
+        default=10.0, title="Time in seconds in-between ffmpeg health checks."
+    )
+
     inputs: List[CameraInput] = Field(title="Camera inputs.")
 
     @validator("inputs")
